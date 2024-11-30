@@ -37,7 +37,7 @@ export default function TaskForm({ addTask, editingTask }) {
         value={description}
         onChangeText={setDescription}
       />
-      <Text style={styles.priorityLabel}>Importância</Text>
+      <Text style={styles.priorityLabel}>Prioridade</Text>
       <View style={styles.priorityContainer}>
         <TouchableOpacity
           style={[
@@ -46,7 +46,7 @@ export default function TaskForm({ addTask, editingTask }) {
           ]}
           onPress={() => setPriority(1)}
         >
-          <Text style={styles.priorityText}>Baixa</Text>
+          <Text style={styles.priorityText}>1- Baixa</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -55,7 +55,7 @@ export default function TaskForm({ addTask, editingTask }) {
           ]}
           onPress={() => setPriority(2)}
         >
-          <Text style={styles.priorityText}>Média</Text>
+          <Text style={styles.priorityText}>2- Média</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -64,7 +64,7 @@ export default function TaskForm({ addTask, editingTask }) {
           ]}
           onPress={() => setPriority(3)}
         >
-          <Text style={styles.priorityText}>Alta</Text>
+          <Text style={styles.priorityText}>3- Alta</Text>
         </TouchableOpacity>
       </View>
       <Button

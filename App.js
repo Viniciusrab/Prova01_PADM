@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 
@@ -32,38 +32,44 @@ export default function App() {
   };
 
   return (
-    <View style={[styles.container, { marginTop: 20 }]}>
-      <Text style={styles.title}>Gerenciador de Tarefas</Text>
-      <TaskForm addTask={addTask} editingTask={editingTask} />
-      
-      {/* Separador */}
-      <View style={styles.divider} />
+    <ScrollView style={styles.scrollContainer}>
+      <View style={styles.container}>
+        <Text style={[styles.title, { marginTop: 20 }]}>Gerenciador de Tarefas</Text>
+        <TaskForm addTask={addTask} editingTask={editingTask} />
 
-      <TaskList
-        tasks={tasks}
-        editTask={editTask}
-        deleteTask={deleteTask}
-        sortTasks={sortTasks}
-      />
-    </View>
+        {/* Separador visual */}
+        <View style={styles.divider} />
+         <Text style={[styles.title, { marginBottom: 10 }]}>Tarefas Cadastradas</Text>
+
+        <TaskList
+          tasks={tasks}
+          editTask={editTask}
+          deleteTask={deleteTask}
+          sortTasks={sortTasks}
+        />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  container: {
+    flex: 1,
     padding: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#6A0DAD', // Lilás escuro
+    color: '#6A0DAD',
   },
   divider: {
     borderBottomWidth: 1,
-    borderBottomColor: '#D8BFD8', // Lilás claro
+    borderBottomColor: '#D8BFD8',
     marginVertical: 20,
   },
 });

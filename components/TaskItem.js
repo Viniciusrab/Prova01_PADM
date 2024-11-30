@@ -13,7 +13,7 @@ export default function TaskItem({ task, editTask, deleteTask }) {
         <Button
           title="Editar"
           onPress={() => editTask(task)}
-          color="#9370DB" // Tom de lilás
+          color="#8A2BE2" // Tom de lilás
         />
         <Button
           title="Excluir"
