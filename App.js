@@ -9,7 +9,7 @@ export default function App() {
 
   const addTask = (task) => {
     if (editingTask) {
-      setTasks(tasks.map(t => (t.id === editingTask.id ? task : t)));
+      setTasks(tasks.map((t) => (t.id === editingTask.id ? task : t)));
       setEditingTask(null);
     } else {
       setTasks([...tasks, { ...task, id: Date.now().toString() }]);
@@ -21,19 +21,24 @@ export default function App() {
   };
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter(task => task.id !== taskId));
+    setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
   const sortTasks = (ascending = true) => {
-    setTasks([...tasks].sort((a, b) =>
+    const sortedTasks = [...tasks].sort((a, b) =>
       ascending ? a.priority - b.priority : b.priority - a.priority
-    ));
+    );
+    setTasks(sortedTasks);
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { marginTop: 20 }]}>
       <Text style={styles.title}>Gerenciador de Tarefas</Text>
       <TaskForm addTask={addTask} editingTask={editingTask} />
+      
+      {/* Separador */}
+      <View style={styles.divider} />
+
       <TaskList
         tasks={tasks}
         editTask={editTask}
@@ -54,5 +59,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#6A0DAD', // Lilás escuro
+  },
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#D8BFD8', // Lilás claro
+    marginVertical: 20,
   },
 });
